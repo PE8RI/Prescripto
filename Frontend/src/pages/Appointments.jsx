@@ -3,6 +3,7 @@ import { useState,useEffect,useContext  } from 'react';
 import { useParams } from 'react-router-dom'
 import { assets } from '../assets/assets';
 import { AppContext } from '../context/AppContext';
+import RelatedDoctors from '../componets/RelatedDoctors';
 
 const Appointments = () => {
 
@@ -18,7 +19,7 @@ const Appointments = () => {
   const fetchDocInfo=async()=>{
     const docInfo=doctors.find(doc=> doc._id===docId)
     setDocInfo(docInfo)
-    console.log(docInfo)
+     
   }
 
   const getAvailableSlots=async()=>{
@@ -130,10 +131,11 @@ while (currentDate < endTime) {
       ))
     }
   </div>
+  <button className='bg-primary text-sm text-white font-light py-3 px-14 mt-5 rounded-full'>Book an appointment</button>
 </div>
 
-
-    </div>
+<RelatedDoctors docId={docId} speciality={docInfo.speciality}/>
+</div>
   )
 }
 
